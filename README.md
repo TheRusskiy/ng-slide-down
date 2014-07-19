@@ -1,7 +1,7 @@
 Ng Slide Down
 =================
 
-AngularJS directive for vertical slide down animation ([JS Fiddle](http://jsfiddle.net/therusskiy/JR3C7/2/)).
+AngularJS directive for vertical slide down animation ([JS Fiddle](http://jsfiddle.net/therusskiy/JR3C7/3/)).
 ## Installation
 Just add this module as a dependency: <code>angular.module("myApp", ['ng-slide-down'])</code>
 ## Usage
@@ -33,7 +33,7 @@ Then you can subscribe to it in an outer scope:
 <pre><code>$scope.on('widget_closed', function(){  do stuff });</code></pre>
  
 ## Usage example
-Full version can be found on [JS Fiddle](http://jsfiddle.net/therusskiy/JR3C7/2/)
+Full version can be found on [JS Fiddle](http://jsfiddle.net/therusskiy/JR3C7/3/)
  
 <pre>
 <code>

@@ -12,11 +12,11 @@
         }
       };
       link = function (scope, element, attrs, ctrl, transclude) {
-        var closePromise, duration, elementScope, emitOnClose, getHeight, hide, lazyRender, onCloseEnd, show;
+        var closePromise, duration, elementScope, emitOnClose, getHeight, hide, lazyRender, onClose, show;
         duration = attrs.duration || 1;
         elementScope = element.scope();
         emitOnClose = attrs.emitOnClose;
-        onCloseEnd = attrs.onCloseEnd;
+        onClose = attrs.onClose;
         lazyRender = attrs.lazyRender !== void 0;
         closePromise = null;
         element.css({
@@ -46,13 +46,13 @@
         };
         hide = function () {
           element.css('height', '0px');
-          if (emitOnClose || onCloseEnd || lazyRender) {
+          if (emitOnClose || onClose || lazyRender) {
             return closePromise = $timeout(function () {
               if (emitOnClose) {
                 scope.$emit(emitOnClose, {});
               }
-              if (onCloseEnd) {
-                elementScope.$eval(onCloseEnd);
+              if (onClose) {
+                elementScope.$eval(onClose);
               }
               if (lazyRender) {
                 return scope.lazyRender = false;
