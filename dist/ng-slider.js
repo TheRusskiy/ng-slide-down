@@ -12,8 +12,8 @@
         }
       };
       link = function (scope, element, attrs, ctrl, transclude) {
-        var closePromise, elementScope, emitOnClose, getHeight, hide, lazyRender, onCloseEnd, show, time;
-        time = attrs.time || 1;
+        var closePromise, duration, elementScope, emitOnClose, getHeight, hide, lazyRender, onCloseEnd, show;
+        duration = attrs.duration || 1;
         elementScope = element.scope();
         emitOnClose = attrs.emitOnClose;
         onCloseEnd = attrs.onCloseEnd;
@@ -22,7 +22,7 @@
         element.css({
           overflow: 'hidden',
           transitionProperty: 'height',
-          transitionDuration: '' + time + 's',
+          transitionDuration: '' + duration + 's',
           transitionTimingFunction: 'ease-in-out'
         });
         getHeight = function (passedScope) {
@@ -57,7 +57,7 @@
               if (lazyRender) {
                 return scope.lazyRender = false;
               }
-            }, time * 1000);
+            }, duration * 1000);
           }
         };
         scope.$watch('expanded', function (value, oldValue) {

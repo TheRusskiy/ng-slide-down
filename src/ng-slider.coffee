@@ -7,7 +7,7 @@ angular.module("ng-slider", []).directive "ngSlider", ($timeout )->
       "<div ng-transclude></div>"
 
   link = (scope, element, attrs, ctrl, transclude) ->
-    time = attrs.time || 1
+    duration = attrs.duration || 1
     elementScope = element.scope()
     emitOnClose = attrs.emitOnClose
     onCloseEnd = attrs.onCloseEnd
@@ -16,7 +16,7 @@ angular.module("ng-slider", []).directive "ngSlider", ($timeout )->
     element.css {
       overflow: "hidden"
       transitionProperty: "height"
-      transitionDuration: "#{time}s"
+      transitionDuration: "#{duration}s"
       transitionTimingFunction: "ease-in-out"
     }
 
@@ -40,7 +40,7 @@ angular.module("ng-slider", []).directive "ngSlider", ($timeout )->
           scope.$emit emitOnClose, {} if emitOnClose
           elementScope.$eval(onCloseEnd) if onCloseEnd
           scope.lazyRender = false if lazyRender
-        , time*1000
+        , duration*1000
 
     scope.$watch 'expanded', (value, oldValue)->
       if value
