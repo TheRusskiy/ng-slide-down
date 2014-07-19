@@ -1,5 +1,5 @@
 "use strict"
-angular.module("ng-slider", []).directive "ngSlider", ($timeout )->
+angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
   getTemplate = (tElement, tAttrs)->
     if tAttrs.lazyRender != undefined
       "<div ng-if='lazyRender' ng-transclude></div>"
@@ -55,7 +55,7 @@ angular.module("ng-slider", []).directive "ngSlider", ($timeout )->
   return {
     restrict: 'A'
     scope: {
-      expanded: '=ngSlider'
+      expanded: '=ngSlideDown'
     }
     transclude: true
     link: link

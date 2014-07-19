@@ -2,17 +2,17 @@
 <html ng-app="myApp">
 <head lang="en">
   <meta charset="UTF-8">
-  <title>ng-slider demo</title>
+  <title>ng-slide-down demo</title>
   <script src="angular.js"></script>
   <script src="myapp.js"></script>
-  <script src="ng-slider.js"></script>
+  <script src="ng-slide-down.js"></script>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body ng-controller="MyCtrl">
   <div ng-click="widgetExpanded = !widgetExpanded" class="head">
     Click to slide in/out
   </div>
-  <div ng-slider="widgetExpanded" lazy-render duration="1">
+  <div ng-slide-down="widgetExpanded" lazy-render duration="1">
     <div class="content">
       Some awesome content here
     </div>

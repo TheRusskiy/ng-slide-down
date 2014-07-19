@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  angular.module('ng-slider', []).directive('ngSlider', [
+  angular.module('ng-slide-down', []).directive('ngSlideDown', [
     '$timeout',
     function ($timeout) {
       var getTemplate, link;
@@ -75,7 +75,7 @@
       };
       return {
         restrict: 'A',
-        scope: { expanded: '=ngSlider' },
+        scope: { expanded: '=ngSlideDown' },
         transclude: true,
         link: link,
         template: function (tElement, tAttrs) {

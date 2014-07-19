@@ -1,5 +1,5 @@
 (function() {
   "use strict";
-  angular.module("myApp", ['ng-slider']).controller('MyCtrl', function($scope) {});
+  angular.module("myApp", ['ng-slide-down']).controller('MyCtrl', function($scope) {});
 
 }).call(this);
