@@ -30,12 +30,8 @@ Message emitted when slider is finished closing
 <code>&lt;div ng-slider=&quot;slideDown&quot; emit-on-close=&quot;widget_closed&quot;&gt;</code>
 Then you can subscribe to it in an outer scope:
 
-<pre><code>
-$scope.on('widget_closed', function(){ 
- // do stuff
- });
-</code></pre>
-  
+<pre><code>$scope.on('widget_closed', function(){  do stuff });</code></pre>
+ 
 ## Usage example
 Full version can be found on [JS Fiddle](http://jsfiddle.net/therusskiy/JR3C7/2/)
  
