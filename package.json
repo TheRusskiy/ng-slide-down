@@ -1,8 +1,8 @@
 {
   "name": "ng-slider",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Slider animation directive for AngularJS",
-  "main": "index.js",
+  "homepage": "https://github.com/TheRusskiy/ng-slider",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,28 +14,32 @@
   ],
   "author": "TheRusskiy",
   "license": "MIT",
-    "devDependencies": {
-        "coffee-script": "~1.6.3",
-        "grunt": "~0.4.1",
-        "grunt-autoprefixer": "~0.4.0",
-        "grunt-bower-install": "~0.7.0",
-        "grunt-concurrent": "~0.4.3",
-        "grunt-contrib-clean": "~0.5.0",
-        "grunt-contrib-coffee": "~0.8.2",
-        "grunt-contrib-concat": "~0.3.0",
-        "grunt-contrib-copy": "~0.4.1",
-        "grunt-contrib-jshint": "~0.7.1",
-        "grunt-contrib-uglify": "~0.2.0",
-        "grunt-contrib-watch": "~0.5.2",
-        "grunt-ngmin": "~0.0.3",
-        "grunt-usemin": "~2.0.0",
-        "jshint-stylish": "~0.1.3",
-        "load-grunt-tasks": "~0.2.0",
-        "time-grunt": "~0.2.1",
-        "connect-livereload": "~0.3.0",
-        "grunt-shell": "~0.6.4"
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "grunt": "~0.4.1",
+    "grunt-autoprefixer": "~0.4.0",
+    "grunt-bower-install": "~0.7.0",
+    "grunt-concurrent": "~0.4.3",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-coffee": "~0.8.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-ngmin": "~0.0.3",
+    "grunt-usemin": "~2.0.0",
+    "jshint-stylish": "~0.1.3",
+    "load-grunt-tasks": "~0.2.0",
+    "time-grunt": "~0.2.1",
+    "connect-livereload": "~0.3.0",
+    "grunt-shell": "~0.6.4"
     },
     "engines": {
-        "node": ">=0.10.0"
+      "node": ">=0.10.0"
+    },
+    "repository": {
+      "type" : "git",
+      "url" : "https://github.com/TheRusskiy/ng-slider.git"
     }
 }
