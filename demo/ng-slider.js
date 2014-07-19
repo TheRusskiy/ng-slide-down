@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  angular.module('myApp').directive('ngSlider', [
+  angular.module('ng-slider', []).directive('ngSlider', [
     '$timeout',
     function ($timeout) {
       var getTemplate, link;
