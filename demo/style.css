@@ -1,0 +1,24 @@
+div {
+    /*background-color: gray;*/
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+}
+.head, .content, .footer {
+    width: 240px;
+    padding: 5px;
+    border: 2px solid;
+}
+.head {
+    cursor: pointer;
+    background-color: #a5fb88;
+    border-bottom: none;
+}
+.content {
+    border-top: none;
+    border-bottom: none;
+}
+.footer {
+    background-color: #3ac1ff;
+    border-top: none;
+}

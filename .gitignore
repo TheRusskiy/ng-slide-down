@@ -1,0 +1,8 @@
+# Intellij
+.idea/
+*.iml
+*.iws
+start.sh
+Guardfile
+build/
+node_modules/
