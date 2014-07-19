@@ -37,6 +37,8 @@ $scope.on('widget_closed', function(){
 </code></pre>
   
 ## Usage example
+Full version can be found on [JS Fiddle](http://jsfiddle.net/therusskiy/JR3C7/2/)
+ 
 <pre>
 <code>
 &lt;div ng-click=&quot;widgetExpanded = !widgetExpanded&quot;&gt;
