@@ -1,0 +1,27 @@
+{
+  "name": "ng-slider",
+  "version": "0.0.0",
+  "authors": [
+    "TheRusskiy <dimanrussian@gmail.com>"
+  ],
+  "description": "Slider animation directive for AngularJS",
+  "main": "src/ng-slider.coffee",
+  "keywords": [
+    "angularjs",
+    "animation",
+    "slider",
+    "directive"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/TheRusskiy/ng-slider",
+  "ignore": [
+    "demo"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TheRusskiy/ng-slider.git"
+  },
+  "dependencies": {
+    "angular": "~1.2.20"
+  }
+}
