@@ -10,7 +10,7 @@ angular.module("ng-slider", []).directive "ngSlider", ($timeout )->
     duration = attrs.duration || 1
     elementScope = element.scope()
     emitOnClose = attrs.emitOnClose
-    onCloseEnd = attrs.onCloseEnd
+    onClose = attrs.onClose
     lazyRender = attrs.lazyRender != undefined
     closePromise = null
     element.css {
@@ -35,10 +35,10 @@ angular.module("ng-slider", []).directive "ngSlider", ($timeout )->
 
     hide = ()->
       element.css('height', '0px')
-      if emitOnClose || onCloseEnd || lazyRender
+      if emitOnClose || onClose || lazyRender
         closePromise = $timeout ()->
           scope.$emit emitOnClose, {} if emitOnClose
-          elementScope.$eval(onCloseEnd) if onCloseEnd
+          elementScope.$eval(onClose) if onClose
           scope.lazyRender = false if lazyRender
         , duration*1000
 
