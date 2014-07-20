@@ -4,6 +4,9 @@ Ng Slide Down
 AngularJS directive for vertical slide down animation ([JS Fiddle](http://jsfiddle.net/therusskiy/JR3C7/3/)).
 ## Installation
 Just add this module as a dependency: <code>angular.module("myApp", ['ng-slide-down'])</code>
+You can download this module from bower using
+
+<code>bower install ng-slide-down</code>
 ## Usage
 In order to use a directive add attribute <code>ng-slide-down</code> to an element you want to hide. Pass some variable to it as a value and it's going to serve as a trigger to expand/hide the element: <code>lazy-render="someVariable"</code>.
 ## Features
