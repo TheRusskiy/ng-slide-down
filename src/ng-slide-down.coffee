@@ -12,6 +12,9 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
     emitOnClose = attrs.emitOnClose
     onClose = attrs.onClose
     lazyRender = attrs.lazyRender != undefined
+    if lazyRender
+      scope.lazyRender = scope.expanded
+
     closePromise = null
     element.css {
       overflow: "hidden"
