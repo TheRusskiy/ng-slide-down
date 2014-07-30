@@ -18,6 +18,9 @@
         emitOnClose = attrs.emitOnClose;
         onClose = attrs.onClose;
         lazyRender = attrs.lazyRender !== void 0;
+        if (lazyRender) {
+          scope.lazyRender = scope.expanded;
+        }
         closePromise = null;
         element.css({
           overflow: 'hidden',
