@@ -12,16 +12,8 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
     emitOnClose = attrs.emitOnClose
     onClose = attrs.onClose
     lazyRender = attrs.lazyRender != undefined
-    if lazyRender
-      scope.lazyRender = scope.expanded
-
     closePromise = null
-    element.css {
-      overflow: "hidden"
-      transitionProperty: "height"
-      transitionDuration: "#{duration}s"
-      transitionTimingFunction: "ease-in-out"
-    }
+    openPromise = null
 
     getHeight = (passedScope)->
       height = 0
@@ -33,11 +25,33 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
     show = ()->
       $timeout.cancel(closePromise) if closePromise
       scope.lazyRender = true if lazyRender
-      element.css('height', getHeight())
+      $timeout ->
+        $timeout.cancel(openPromise) if openPromise
+        element.css {
+          overflow: "hidden"
+          transitionProperty: "height"
+          transitionDuration: "#{duration}s"
+          transitionTimingFunction: "ease-in-out"
+          height: getHeight()
+        }
+        openPromise = $timeout ()->
+          element.css {
+            overflow: "visible"
+            transition: "none",
+            height: "initial"
+          }
+        , duration*1000
 
 
     hide = ()->
-      element.css('height', '0px')
+      $timeout.cancel(openPromise) if openPromise
+      element.css {
+        overflow: "hidden"
+        transitionProperty: "height"
+        transitionDuration: "#{duration}s"
+        transitionTimingFunction: "ease-in-out"
+        height: '0px'
+      }
       if emitOnClose || onClose || lazyRender
         closePromise = $timeout ()->
           scope.$emit emitOnClose, {} if emitOnClose
@@ -49,11 +63,10 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
       if value
         $timeout show
       else
+        element.css {
+          height: getHeight()
+        }
         $timeout hide
-
-    scope.$watch getHeight, (value, oldValue)->
-      if scope.expanded && value!=oldValue
-        $timeout show
 
   return {
     restrict: 'A'

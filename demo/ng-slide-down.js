@@ -12,22 +12,14 @@
         }
       };
       link = function (scope, element, attrs, ctrl, transclude) {
-        var closePromise, duration, elementScope, emitOnClose, getHeight, hide, lazyRender, onClose, show;
+        var closePromise, duration, elementScope, emitOnClose, getHeight, hide, lazyRender, onClose, openPromise, show;
         duration = attrs.duration || 1;
         elementScope = element.scope();
         emitOnClose = attrs.emitOnClose;
         onClose = attrs.onClose;
         lazyRender = attrs.lazyRender !== void 0;
-        if (lazyRender) {
-          scope.lazyRender = scope.expanded;
-        }
         closePromise = null;
-        element.css({
-          overflow: 'hidden',
-          transitionProperty: 'height',
-          transitionDuration: '' + duration + 's',
-          transitionTimingFunction: 'ease-in-out'
-        });
+        openPromise = null;
         getHeight = function (passedScope) {
           var c, children, height, _i, _len;
           height = 0;
@@ -45,10 +37,37 @@
           if (lazyRender) {
             scope.lazyRender = true;
           }
-          return element.css('height', getHeight());
+          return $timeout(function () {
+            if (openPromise) {
+              $timeout.cancel(openPromise);
+            }
+            element.css({
+              overflow: 'hidden',
+              transitionProperty: 'height',
+              transitionDuration: '' + duration + 's',
+              transitionTimingFunction: 'ease-in-out',
+              height: getHeight()
+            });
+            return openPromise = $timeout(function () {
+              return element.css({
+                overflow: 'visible',
+                transition: 'none',
+                height: 'initial'
+              });
+            }, duration * 1000);
+          });
         };
         hide = function () {
-          element.css('height', '0px');
+          if (openPromise) {
+            $timeout.cancel(openPromise);
+          }
+          element.css({
+            overflow: 'hidden',
+            transitionProperty: 'height',
+            transitionDuration: '' + duration + 's',
+            transitionTimingFunction: 'ease-in-out',
+            height: '0px'
+          });
           if (emitOnClose || onClose || lazyRender) {
             return closePromise = $timeout(function () {
               if (emitOnClose) {
@@ -63,16 +82,12 @@
             }, duration * 1000);
           }
         };
-        scope.$watch('expanded', function (value, oldValue) {
+        return scope.$watch('expanded', function (value, oldValue) {
           if (value) {
             return $timeout(show);
           } else {
+            element.css({ height: getHeight() });
             return $timeout(hide);
-          }
-        });
-        return scope.$watch(getHeight, function (value, oldValue) {
-          if (scope.expanded && value !== oldValue) {
-            return $timeout(show);
           }
         });
       };
