@@ -21,3 +21,7 @@ div {
     background-color: #3ac1ff;
     border-top: none;
 }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
