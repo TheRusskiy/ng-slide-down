@@ -63,9 +63,11 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
       if value
         $timeout show
       else
-        element.css {
-          height: getHeight()
-        }
+        if value?
+          element.css {
+            height: getHeight()
+          }
+          element[0].clientHeight # Force reflow so the animation triggers reliably
         $timeout hide
 
   return {

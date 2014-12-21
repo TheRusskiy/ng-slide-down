@@ -86,7 +86,10 @@
           if (value) {
             return $timeout(show);
           } else {
-            element.css({ height: getHeight() });
+            if (value != null) {
+              element.css({ height: getHeight() });
+              element[0].clientHeight;
+            }
             return $timeout(hide);
           }
         });
