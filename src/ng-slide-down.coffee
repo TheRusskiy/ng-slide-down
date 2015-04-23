@@ -38,7 +38,7 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
           element.css {
             overflow: "visible"
             transition: "none",
-            height: "initial"
+            height: "auto"
           }
         , duration*1000
 
