@@ -8,6 +8,7 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
 
   link = (scope, element, attrs, ctrl, transclude) ->
     duration = attrs.duration || 1
+    timingFunction = attrs.timingFunction || "ease-in-out"
     elementScope = element.scope()
     emitOnClose = attrs.emitOnClose
     onClose = attrs.onClose
@@ -31,7 +32,7 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
           overflow: "hidden"
           transitionProperty: "height"
           transitionDuration: "#{duration}s"
-          transitionTimingFunction: "ease-in-out"
+          transitionTimingFunction: timingFunction
           height: getHeight()
         }
         openPromise = $timeout ()->
@@ -49,7 +50,7 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
         overflow: "hidden"
         transitionProperty: "height"
         transitionDuration: "#{duration}s"
-        transitionTimingFunction: "ease-in-out"
+        transitionTimingFunction: timingFunction
         height: '0px'
       }
       if emitOnClose || onClose || lazyRender

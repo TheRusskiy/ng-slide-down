@@ -27,6 +27,11 @@ Main attribute, required for directive to work, passed variable defines whether 
 Time in seconds for animation to complete (default is 1 second).
 
 <code>&lt;div ng-slide-down=&quot;slideDown&quot; duration=&quot;1.5&quot;&gt;</code>
+
+#### timing-function
+Easing function (`transition-timing-function`) to use in the animation (default is ease-in-out).
+
+<code>&lt;div ng-slide-down=&quot;slideDown&quot; timing-function=&quot;linear&quot;&gt;</code>
 #### lazy-render
 Add this attribute to prevent rendering when content is hidden. Doesn't require value.
 
