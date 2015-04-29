@@ -12,8 +12,9 @@
         }
       };
       link = function (scope, element, attrs, ctrl, transclude) {
-        var closePromise, duration, elementScope, emitOnClose, getHeight, hide, lazyRender, onClose, openPromise, show;
+        var closePromise, duration, elementScope, emitOnClose, getHeight, hide, lazyRender, onClose, openPromise, show, timingFunction;
         duration = attrs.duration || 1;
+        timingFunction = attrs.timingFunction || 'ease-in-out';
         elementScope = element.scope();
         emitOnClose = attrs.emitOnClose;
         onClose = attrs.onClose;
@@ -45,7 +46,7 @@
               overflow: 'hidden',
               transitionProperty: 'height',
               transitionDuration: '' + duration + 's',
-              transitionTimingFunction: 'ease-in-out',
+              transitionTimingFunction: timingFunction,
               height: getHeight()
             });
             return openPromise = $timeout(function () {
@@ -65,7 +66,7 @@
             overflow: 'hidden',
             transitionProperty: 'height',
             transitionDuration: '' + duration + 's',
-            transitionTimingFunction: 'ease-in-out',
+            transitionTimingFunction: timingFunction,
             height: '0px'
           });
           if (emitOnClose || onClose || lazyRender) {
