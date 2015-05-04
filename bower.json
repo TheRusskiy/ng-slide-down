@@ -5,7 +5,7 @@
     "TheRusskiy <dimanrussian@gmail.com>"
   ],
   "description": "Slider animation directive for AngularJS",
-  "main": "src/ng-slide-down.coffee",
+  "main": "dist/ng-slide-down.js",
   "keywords": [
     "angularjs",
     "animation",
