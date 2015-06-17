@@ -1,6 +1,6 @@
 {
   "name": "ng-slide-down",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Slider animation directive for AngularJS",
   "homepage": "https://github.com/TheRusskiy/ng-slide-down",
   "scripts": {
