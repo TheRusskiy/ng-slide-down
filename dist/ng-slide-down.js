@@ -6,9 +6,9 @@
       var getTemplate, link;
       getTemplate = function (tElement, tAttrs) {
         if (tAttrs.lazyRender !== void 0) {
-          return '<div ng-if=\'lazyRender\' ng-transclude></div>';
+          return '<div><div ng-transclude ng-if=\'lazyRender\'></div></div>';
         } else {
-          return '<div ng-transclude></div>';
+          return '<div><div ng-transclude></div></div>';
         }
       };
       link = function (scope, element, attrs, ctrl, transclude) {

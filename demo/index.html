@@ -9,10 +9,43 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body ng-controller="MyCtrl"  ng-cloak>
-  <div ng-click="widgetExpanded = !widgetExpanded" class="head">
-    Click to slide in/out
+  <div ng-click="widgetExpandedLazy = !widgetExpandedLazy" class="head">
+    Lazy, initial false
   </div>
-  <div ng-slide-down="widgetExpanded" lazy-render duration="1">
+  <div ng-slide-down="widgetExpandedLazy" lazy-render duration="1">
+    <div class="content">
+      Some awesome content here
+    </div>
+  </div>
+  <div class="footer">
+    After content
+  </div>
+  <div ng-click="widgetExpanded = !widgetExpanded" class="head">
+    Non lazy, initial false
+  </div>
+  <div ng-slide-down="widgetExpanded" duration="1">
+    <div class="content">
+      Some awesome content here
+    </div>
+  </div>
+  <div class="footer">
+    After content
+  </div>
+  <div ng-init="widgetExpandedLazyTrue = true" ng-click="widgetExpandedLazyTrue = !widgetExpandedLazyTrue" class="head">
+    Lazy, initial true
+  </div>
+  <div ng-slide-down="widgetExpandedLazyTrue" lazy-render duration="1">
+    <div class="content">
+      Some awesome content here
+    </div>
+  </div>
+  <div class="footer">
+    After content
+  </div>
+  <div ng-init="widgetExpandedTrue = true" ng-click="widgetExpandedTrue = !widgetExpandedTrue" class="head">
+    Non lazy, initial true
+  </div>
+  <div ng-slide-down="widgetExpandedTrue" duration="1">
     <div class="content">
       Some awesome content here
     </div>

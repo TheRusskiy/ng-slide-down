@@ -2,9 +2,9 @@
 angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
   getTemplate = (tElement, tAttrs)->
     if tAttrs.lazyRender != undefined
-      "<div ng-if='lazyRender' ng-transclude></div>"
+      "<div><div ng-transclude ng-if='lazyRender'></div></div>"
     else
-      "<div ng-transclude></div>"
+      "<div><div ng-transclude></div></div>"
 
   link = (scope, element, attrs, ctrl, transclude) ->
     duration = attrs.duration || 1
