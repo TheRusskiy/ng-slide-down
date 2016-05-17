@@ -43,7 +43,7 @@
               $timeout.cancel(openPromise);
             }
             element.css({
-              overflow: 'hidden',
+              overflowY: 'hidden',
               transitionProperty: 'height',
               transitionDuration: '' + duration + 's',
               transitionTimingFunction: timingFunction,
@@ -51,7 +51,7 @@
             });
             return openPromise = $timeout(function () {
               return element.css({
-                overflow: 'visible',
+                overflowY: 'visible',
                 transition: 'none',
                 height: 'auto'
               });
@@ -63,7 +63,7 @@
             $timeout.cancel(openPromise);
           }
           element.css({
-            overflow: 'hidden',
+            overflowY: 'hidden',
             transitionProperty: 'height',
             transitionDuration: '' + duration + 's',
             transitionTimingFunction: timingFunction,
