@@ -39,6 +39,12 @@ Easing function (`transition-timing-function`) to use in the animation (default 
 Add this attribute to prevent rendering when content is hidden. Doesn't require value.
 
 <code>&lt;div ng-slide-down=&quot;slideDown&quot; lazy-render&gt;</code>
+
+#### keep-alive
+Add this attribute to prevent recompiling of content in the template. Useful for content that may contain addition directives / components that receive data from an API.
+
+<code>&lt;div ng-slide-down=&quot;slideDown&quot; lazy-render keep-alive&gt;</code>
+
 #### on-close
 Expression evaluated when slider is finished closing
 
