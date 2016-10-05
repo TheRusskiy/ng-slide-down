@@ -16,6 +16,9 @@ In order to use a directive add attribute <code>ng-slide-down</code> to an eleme
 #### Lazy rendering
 Has option to prevent HTML generation of contents unless expanded (due to performance considerations). Optimal for a big number of widgets (production tested).
 All you need to do is to add <code>lazy-render</code> attribute to an element with a directive.
+###### Keep Alive
+Additionally, if you need to keep the contents of the expand and collapse from recompiling after the initial expand takes place, adding <code>keep-alive</code> will prevent re-rendering 
+of the html template. This is usefull if you are expanding / collpasing content that may contain directives / components that makes API calls on initializtion.
 #### Automatic height adjustment
 Directive watches for a height of it's content and readjusts it's size automatically - no extra work required. 
 ## Options
