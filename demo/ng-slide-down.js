@@ -5,14 +5,16 @@
     function ($timeout) {
       var getTemplate, link;
       getTemplate = function (tElement, tAttrs) {
-        if (tAttrs.lazyRender !== void 0) {
+        if (tAttrs.lazyRender !== void 0 && tAttrs.keepAlive !== void 0) {
+          return '<div><div ng-transclude ng-if=\'lazyRender\' ng-show=\'loaded\'></div></div>';
+        } else if (tAttrs.lazyRender !== void 0) {
           return '<div><div ng-transclude ng-if=\'lazyRender\'></div></div>';
         } else {
           return '<div><div ng-transclude></div></div>';
         }
       };
       link = function (scope, element, attrs, ctrl, transclude) {
-        var closePromise, duration, elementScope, emitOnClose, getHeight, hide, lazyRender, onClose, openPromise, show, timingFunction;
+        var closePromise, duration, elementScope, emitOnClose, getHeight, hide, keepAlive, lazyRender, loaded, onClose, openPromise, show, timingFunction;
         duration = attrs.duration || 1;
         timingFunction = attrs.timingFunction || 'ease-in-out';
         elementScope = element.scope();
@@ -21,6 +23,8 @@
         lazyRender = attrs.lazyRender !== void 0;
         closePromise = null;
         openPromise = null;
+        keepAlive = attrs.keepAlive !== void 0;
+        loaded = false;
         getHeight = function (passedScope) {
           var c, children, height, _i, _len;
           height = 0;
@@ -38,6 +42,7 @@
           if (lazyRender) {
             scope.lazyRender = true;
           }
+          scope.loaded = true;
           return $timeout(function () {
             if (openPromise) {
               $timeout.cancel(openPromise);
@@ -77,8 +82,11 @@
               if (onClose) {
                 elementScope.$eval(onClose);
               }
-              if (lazyRender) {
-                return scope.lazyRender = false;
+              if (lazyRender && !keepAlive) {
+                scope.lazyRender = false;
+              }
+              if (loaded) {
+                return scope.loaded = false;
               }
             }, duration * 1000);
           }
