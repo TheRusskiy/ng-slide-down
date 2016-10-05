@@ -1,7 +1,9 @@
 "use strict"
 angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
   getTemplate = (tElement, tAttrs)->
-    if tAttrs.lazyRender != undefined
+    if tAttrs.lazyRender != undefined && tAttrs.keepAlive != undefined
+      "<div><div ng-transclude ng-if='lazyRender' ng-show='loaded'></div></div>"
+    else if tAttrs.lazyRender != undefined
       "<div><div ng-transclude ng-if='lazyRender'></div></div>"
     else
       "<div><div ng-transclude></div></div>"
@@ -15,6 +17,8 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
     lazyRender = attrs.lazyRender != undefined
     closePromise = null
     openPromise = null
+    keepAlive = attrs.keepAlive != undefined
+    loaded = false
 
     getHeight = (passedScope)->
       height = 0
@@ -26,6 +30,7 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
     show = ()->
       $timeout.cancel(closePromise) if closePromise
       scope.lazyRender = true if lazyRender
+      scope.loaded = true
       $timeout ->
         $timeout.cancel(openPromise) if openPromise
         element.css {
@@ -57,7 +62,8 @@ angular.module("ng-slide-down", []).directive "ngSlideDown", ($timeout )->
         closePromise = $timeout ()->
           scope.$emit emitOnClose, {} if emitOnClose
           elementScope.$eval(onClose) if onClose
-          scope.lazyRender = false if lazyRender
+          scope.lazyRender = false if lazyRender && !keepAlive
+          scope.loaded = false if loaded
         , duration*1000
 
     scope.$watch 'expanded', (value, oldValue)->
